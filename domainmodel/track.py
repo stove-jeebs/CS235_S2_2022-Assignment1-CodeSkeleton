@@ -1,6 +1,6 @@
-from artist import Artist
-from genre import Genre
-from album import Album
+from domainmodel.artist import Artist
+from domainmodel.genre import Genre
+from domainmodel.album import Album
 
 
 class Track:
@@ -11,10 +11,6 @@ class Track:
             raise ValueError("ERROR: track id needs to be an integer value")
         self.title = title
         self.__genres = []
-        self.lst = []
-
-    def add_to_list(self, item):
-        self.lst.append(item)
 
     @property
     def track_id(self) -> int:
@@ -91,10 +87,3 @@ class Track:
 
     def add_genre(self, genre):
         self.__genres.append(genre)
-
-
-track = Track(16563, "compsci235")
-genre = Genre(1, "hello world")
-track.add_genre(genre)
-print(track.genres)
-print(genre in track.genres)

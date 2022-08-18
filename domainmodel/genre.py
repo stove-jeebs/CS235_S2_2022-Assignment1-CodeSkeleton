@@ -28,6 +28,11 @@ class Genre:
     def __repr__(self):
         return f"<Genre {self.name}, genre id = {self.genre_id}>"
 
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return False
+        return self.genre_id == other.genre_id
+
     def __lt__(self, other):
         return self.genre_id < other.genre_id
 

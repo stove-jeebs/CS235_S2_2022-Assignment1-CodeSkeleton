@@ -1,5 +1,5 @@
-from track import Track
-from review import Review
+from domainmodel.track import Track
+from domainmodel.review import Review
 
 
 class User:
