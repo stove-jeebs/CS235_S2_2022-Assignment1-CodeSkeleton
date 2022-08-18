@@ -1,46 +1,44 @@
+from track import Track
+from review import Review
+
+
 class User:
     def __init__(self, id, username, password):
-        pass
+        if isinstance(id, int) and id >= 0:
+            self.__user_id = id
+        else:
+            raise ValueError("user id must be a positive integer")
+        self.__user_name = (
+            username.strip().lower()
+            if isinstance(username, str) and username != ""
+            else None
+        )
+
+        self.__password = (
+            password if isinstance(password, str) and len(password) >= 7 else None
+        )
+        self.__liked_tracks = []
+        self.__reviews = []
 
     @property
     def user_id(self):
         return self.__user_id
 
-    @user_id.setter
-    def user_id(self, id):
-        pass
-
     @property
     def user_name(self):
-        self.__user_name
-
-    @user_name.setter
-    def user_name(self, name):
-        pass
+        return self.__user_name
 
     @property
     def password(self):
         return self.__password
 
-    @password.setter
-    def password(self, password):
-        pass
-
     @property
     def liked_tracks(self):
         return self.__liked_tracks
 
-    @liked_tracks.setter
-    def liked_tracks(self, tracks):
-        pass
-
     @property
     def reviews(self):
         return self.__reviews
-
-    @reviews.setter
-    def reviews(self, reviews):
-        pass
 
     def __repr__(self):
         return f"<User {self.user_name}, user id = {self.user_id}>"
@@ -56,14 +54,18 @@ class User:
     def __hash__(self):
         return hash(self.user_id)
 
-    def add_liked_track(track):
-        pass
+    def add_liked_track(self, track):
+        if isinstance(track, Track) and track not in self.liked_tracks:
+            self.liked_tracks.append(track)
 
-    def remove_liked_track(track):
-        pass
+    def remove_liked_track(self, track):
+        if track in self.liked_tracks:
+            self.liked_tracks.remove(track)
 
-    def add_review(review):
-        pass
+    def add_review(self, review):
+        if isinstance(review, Review) and review not in self.reviews:
+            self.reviews.append(review)
 
-    def remove_review(review):
-        pass
+    def remove_review(self, review):
+        if review in self.reviews:
+            self.reviews.remove(review)

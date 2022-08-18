@@ -1,9 +1,10 @@
 import pytest
 from domainmodel.track import Track
+from domainmodel.genre import Genre
 
 
-class TestTrack:
-    def test_add_genres(self):
-        track1 = Track(16563, "compsci235")
-        track1.add_genre("hello world")
-        assert track1.genres == ["hello world"]
+def test_add_genres():
+    track = Track(16563, "compsci235")
+    genre = Genre(1, "hello world")
+    track.add_genre(genre)
+    assert genre in track.genres

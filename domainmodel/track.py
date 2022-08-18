@@ -10,6 +10,11 @@ class Track:
         else:
             raise ValueError("ERROR: track id needs to be an integer value")
         self.title = title
+        self.__genres = []
+        self.lst = []
+
+    def add_to_list(self, item):
+        self.lst.append(item)
 
     @property
     def track_id(self) -> int:
@@ -85,5 +90,11 @@ class Track:
         return hash(self.track_id)
 
     def add_genre(self, genre):
-        if isinstance(genre, Genre):
-            self.__genres.append(genre)
+        self.__genres.append(genre)
+
+
+track = Track(16563, "compsci235")
+genre = Genre(1, "hello world")
+track.add_genre(genre)
+print(track.genres)
+print(genre in track.genres)

@@ -7,16 +7,16 @@ class Genre:
     def genre_id(self):
         return self.__genre_id
 
-    @property
-    def name(self):
-        return self.__name
-
     @genre_id.setter
     def genre_id(self, id):
         if isinstance(id, int) and id >= 0:
             self.__genre_id = id
         else:
             raise ValueError("ERROR: genre id needs to be an integer value")
+
+    @property
+    def name(self):
+        return self.__name
 
     @name.setter
     def name(self, name):
@@ -26,7 +26,7 @@ class Genre:
             self.__name = None
 
     def __repr__(self):
-        return f'<Genre {self.name}, genre id = {self.genre_id}>'
+        return f"<Genre {self.name}, genre id = {self.genre_id}>"
 
     def __lt__(self, other):
         return self.genre_id < other.genre_id

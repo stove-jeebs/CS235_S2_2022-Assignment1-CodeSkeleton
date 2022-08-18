@@ -7,16 +7,16 @@ class Artist:
     def artist_id(self):
         return self.__artist_id
 
-    @property
-    def full_name(self):
-        return self.__full_name
-
     @artist_id.setter
     def artist_id(self, id):
         if isinstance(id, int) and id >= 0:
             self.__artist_id: int = id
         else:
             raise ValueError("ERROR: artist id needs to be an integer value")
+
+    @property
+    def full_name(self):
+        return self.__full_name
 
     @full_name.setter
     def full_name(self, new_full_name):
